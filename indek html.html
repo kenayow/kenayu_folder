@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Informatika XII - Kencana.Dev</title>
+    <!-- Font Inter & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* 
+         * Referensi File CSS Eksternal: assets/css/style.css
+         * Ditulis dengan standar CSS modern (Variables, Flexbox, Grid)
+         */
+        :root {
+            --primary-navy: #0f172a;
+            --primary-blue: #1e40af;
+            --accent-blue: #2563eb;
+            --light-blue: #eff6ff;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px -5px rgba(15,23,42,0.12);
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .path-indicator {
+            background: #1e293b;
+            color: #94a3b8;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-family: monospace;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #334155;
+        }
+
+        .path-indicator span mark {
+            background: #3b82f6;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Header & Navigation Bar */
+        header {
+            background-color: var(--primary-navy);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .brand-logo {
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-logo span {
+            color: var(--accent-blue);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.2rem;
+        }
+
+        .nav-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 8px 12px;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-toggle {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Main Container */
+        main {
+            flex: 1;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .page-section {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Titles */
+        .section-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-navy);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Hero Section */
+        .hero-card {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 100%);
+            color: white;
+            border-radius: var(--radius-lg);
+            padding: 3rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 3rem;
+        }
+
+        .hero-img-container {
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .hero-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow-md);
+            background-color: #cbd5e1;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-greeting {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .hero-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-status {
+            font-size: 1.1rem;
+            color: #93c5fd;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-dark {
+            background-color: var(--primary-navy);
+            color: white;
+        }
+
+        .btn-dark:hover {
+            background-color: #1e293b;
+            transform: translateY(-2px);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-blue);
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--light-blue);
+            color: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .skill-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Biodata Table & Card */
+        .biodata-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .profile-summary-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .biodata-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .biodata-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .biodata-table th, .biodata-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .biodata-table th {
+            width: 35%;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .biodata-table td {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Activity Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #cbd5e1;
+        }
+
+        .gallery-caption {
+            padding: 1rem;
+        }
+
+        .gallery-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Modules & Portfolio Cards */
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .draft-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .draft-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-blue);
+        }
+
+        .draft-header {
+            background: var(--light-blue);
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .draft-badge {
+            background: #dbeafe;
+            color: var(--primary-blue);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+
+        .draft-body {
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        .draft-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-navy);
+        }
+
+        .draft-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .code-preview {
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            font-size: 0.85rem;
+            margin-top: 0.8rem;
+            overflow-x: auto;
+        }
+
+        /* Contact Form */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+        }
+
+        .contact-info-card {
+            background: var(--primary-navy);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item-icon {
+            background: rgba(255,255,255,0.1);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #93c5fd;
+        }
+
+        .form-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .alert-box {
+            display: none;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            margin-top: 1rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .alert-success {
+            background: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-navy);
+            color: #94a3b8;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid #334155;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            color: white;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 868px) {
+            .hero-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-group {
+                justify-content: center;
+            }
+
+            .biodata-container, .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary-navy);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-md);
+                border-top: 1px solid #334155;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STYLED PATH INDICATOR FOR DEMO VISIBILITY -->
+    <div class="path-indicator">
+        <span>📂 File Aktif: <mark id="current-file-label">index.html</mark></span>
+        <span>Standard Asset: <mark>assets/css/style.css</mark></span>
+    </div>
+
+    <!-- 1. NAVIGASI MODULAR (HEADER & NAVBAR) -->
+    <header>
+        <nav class="navbar">
+            <a href="#index" onclick="switchPage('index')" class="brand-logo">
+                <i class="fa-solid fa-code"></i> Kencana<span>.Dev</span>
+            </a>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#index" onclick="switchPage('index')" class="nav-link active" data-page="index"><i class="fa-solid fa-house"></i> Beranda</a></li>
+                <li><a href="#tentang" onclick="switchPage('tentang')" class="nav-link" data-page="tentang"><i class="fa-solid fa-user"></i> Tentang Saya</a></li>
+                <li><a href="#jaringan" onclick="switchPage('jaringan')" class="nav-link" data-page="jaringan"><i class="fa-solid fa-network-wired"></i> Jaringan Komputer</a></li>
+                <li><a href="#iot-arduino" onclick="switchPage('iot-arduino')" class="nav-link" data-page="iot-arduino"><i class="fa-solid fa-robot"></i> IoT & Arduino</a></li>
+                <li><a href="#karya-proyek" onclick="switchPage('karya-proyek')" class="nav-link" data-page="karya-proyek"><i class="fa-solid fa-lightbulb"></i> Galeri Proyek</a></li>
+                <li><a href="#kontak" onclick="switchPage('kontak')" class="nav-link" data-page="kontak"><i class="fa-solid fa-envelope"></i> Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 2. KONTEN HALAMAN UTAMA (index.html) -->
+        <section id="page-index" class="page-section active">
+            <!-- Hero Banner -->
+            <div class="hero-card">
+                <div class="hero-img-container">
+                    <img src="https://placehold.co/180x180/1e293b/ffffff?text=Kencana+Profil" alt="Foto Profil Kencana" class="hero-img">
+                </div>
+                <div class="hero-content">
+                    <span class="hero-greeting">👋 Halo & Selamat Datang</span>
+                    <h1 class="hero-name">Kencana Ayu Putri Heryanti</h1>
+                    <p class="hero-status"><i class="fa-solid fa-graduation-cap"></i> Siswa Kelas XII - Peminatan Rekayasa Perangkat Lunak / Informatika</p>
+                    <p style="margin-bottom: 1.5rem; color: #cbd5e1; font-size: 0.95rem;">
+                        Selamat datang di dokumentasi portofolio pembelajaran Informatika. Di sini saya membagikan catatan praktikum jaringan, proyek IoT/Arduino, serta karya pemrograman web yang dikembangkan selama masa studi.
+                    </p>
+                    <div class="cta-group">
+                        <a href="#karya-proyek" onclick="switchPage('karya-proyek')" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Lihat Proyek Saya</a>
+                        <a href="#kontak" onclick="switchPage('kontak')" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Hubungi Saya</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ringkasan Keahlian -->
+            <div class="section-header">
+                <h2 class="section-title">Ringkasan Keahlian</h2>
+                <p class="section-subtitle">Kompetensi teknis dan dasar keahlian yang sedang dipelajari di Kelas XII</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
+                    <h3 class="skill-title">HTML5 Semantik</h3>
+                    <p class="skill-desc">Penyusunan struktur halaman web sesuai standar W3C dan semantik modern.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-brands fa-css3-alt"></i></div>
+                    <h3 class="skill-title">CSS3 & Layouting</h3>
+                    <p class="skill-desc">Styling eksternal, desain responsif dengan Flexbox, Grid, dan CSS Variables.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-server"></i></div>
+                    <h3 class="skill-title">Jaringan Dasar</h3>
+                    <p class="skill-desc">Konfigurasi IP Address, Subnetting, dan Simulasi Topologi Cisco Packet Tracer.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <h3 class="skill-title">IoT & Arduino</h3>
+                    <p class="skill-desc">Pemrograman mikroprosesor C/C++, simulasi Wokwi, sensor, dan aktuator.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h3 class="skill-title">Problem Solving</h3>
+                    <p class="skill-desc">Analisis logika dasar, algoritma pemrograman, dan penelusuran eror (debugging).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. HALAMAN TENTANG SAYA (pages/tentang.html) -->
+        <section id="page-tentang" class="page-section">
+            <div class="section-header">
+                <h2 class="section-title">Tentang Saya</h2>
+                <p class="section-subtitle">Mengenal lebih dekat latar belakang, pendidikan, dan dokumentasi belajar</p>
+            </div>
+
+            <!-- Biodata Lengkap -->
+            <div class="biodata-container">
+                <div class="profile-summary-card">
+                    <img src="https://placehold.co/140x140/0f172a/ffffff?text=Kencana+A" alt="Kencana Ayu Putri Heryanti" style="border-radius: 50%; margin-bottom: 1rem; border: 3px solid var(--accent-blue);">
+                    <h3 style="color: var(--primary-navy); margin-bottom: 0.2rem;">Kencana Ayu P. H.</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Siswa Informatika XII</p>
+                    <p style="font-size: 0.85rem; color: var(--text-dark);">"Selalu bersemangat mempelajari teknologi jaringan modern dan pengkodean sistem IoT."</p>
+                </div>
+
+                <div class="biodata-card">
+                    <h3 style="color: var(--primary-navy); margin-bottom: 1rem; font-size: 1.2rem;"><i class="fa-solid fa-id-card"></i> Biodata Lengkap</h3>
+                    <table class="biodata-table">
+                        <tr>
+                            <th>Nama Lengkap</th>
+                            <td>Kencana Ayu Putri Heryanti</td>
+                        </tr>
+                        <tr>
+                            <th>Kelas / Peminatan</th>
+                            <td>XII - Rekayasa Perangkat Lunak / Informatika</td>
+                        </tr>
+                        <tr>
+                            <th>Sekolah</th>
+                            <td>SMAN 2 Mojokerto</td>
+                        </tr>
+                        <tr>
+                            <th>Riwayat Pendidikan</th>
+                            <td>SMPN 1 Balongbendo &bull; SMAN 2 Mojokerto (Sekarang)</td>
+                        </tr>
+                        <tr>
+                            <th>Minat Studi Masa Depan</th>
+                            <td>Teknik Informatika / Sistem Informasi / Cyber Security</td>
+                        </tr>
+                        <tr>
+                            <th>Fokus Pembelajaran</th>
+                            <td>Web Development, Computer Networking, IoT Systems</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Galeri Aktivitas Belajar -->
+            <div class="section-header" style="margin-top: 3rem;">
+                <h3 style="font-size: 1.5rem; color: var(--primary-navy);">Galeri Aktivitas Belajar</h3>
+                <p class="section-subtitle">Dokumentasi saat praktikum di laboratorium komputer dan kegiatan sekolah</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-card">
+                    <img src="https://placehold.co/400x250/1e40af/ffffff?text=Praktikum+Lab+Komputer" alt="Praktikum Lab" class="gallery-img">
+                    <div class="gallery-caption">
+                        <div class="gallery-title">Praktikum Jaringan LAN</div>
+                        <p class="gallery-date"><i class="fa-regular fa-calendar"></i> Laboratorium Komputer 2</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card">
+                    <img src="https://placehold.co/400x250/0f172a/ffffff?text=Rakit+Arduino+%26+Sensor" alt="Rakit Arduino" class="gallery-img">
+                    <div class="gallery-caption">
+                        <div class="gallery-title">Perakitan Sensor DHT11 & LCD</div>
+                        <p class="gallery-date"><i class="fa-regular fa-calendar"></i> Workshop IoT Sekolah</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card">
+                    <img src="https://placehold.co/400x250/2563eb/ffffff?text=Simulasi+Topologi+Cisco" alt="Simulasi Cisco" class="gallery-img">
+                    <div class="gallery-caption">
+                        <div class="gallery-title">Simulasi Cisco Packet Tracer</div>
+                        <p class="gallery-date"><i class="fa-regular fa-calendar"></i> Tugas Mandiri Jaringan</p>
+                    </div>
+                </div>
+
+                <div class="gallery-card">
+                    <img src="https://placehold.co/400x250/334155/ffffff?text=Diskusi+Kelompok+Coding" alt="Diskusi Kelompok" class="gallery-img">
+                    <div class="gallery-caption">
+                        <div class="gallery-title">Diskusi Project Web Portofolio</div>
+                        <p class="gallery-date"><i class="fa-regular fa-calendar"></i> Perpus & Ruang Belajar</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4A. MODUL JARINGAN KOMPUTER (pages/jaringan.html) -->
+        <section id="page-jaringan" class="page-section">
+            <div class="section-header">
+                <h2 class="section-title">🌐 Modul Jaringan Komputer</h2>
+                <p class="section-subtitle">Dokumentasi konfigurasi, topologi, dan analisis protokol jaringan Informatika Kelas XII</p>
+            </div>
+
+            <div class="module-grid">
+                <!-- Draft Card 1 -->
+                <div class="draft-card">
+                    <div class="draft-header">
+                        <span class="draft-badge">Modul 01</span>
+                        <i class="fa-solid fa-network-wired" style="color: var(--primary-blue);"></i>
+                    </div>
+                    <div class="draft-body">
+                        <h3 class="draft-title">Konfigurasi IP Address & Subnetting</h3>
+                        <p class="draft-desc">Praktikum pengalamatan IP v4 Static, perkhitungan Subnet Mask Class C, dan pengujian konektivitas antarnode menggunakan perintah `ping` dan `traceroute`.</p>
+                        <div class="code-preview">
+# Pengujian Konektivitas
+$ ipconfig /all
+$ ping 192.168.10.1 -t
+Reply from 192.168.10.1: bytes=32 time=1ms TTL=64
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Draft Card 2 -->
+                <div class="draft-card">
+                    <div class="draft-header">
+                        <span class="draft-badge">Modul 02</span>
+                        <i class="fa-solid fa-diagram-project" style="color: var(--primary-blue);"></i>
+                    </div>
+                    <div class="draft-body">
+                        <h3 class="draft-title">Simulasi Topologi Cisco Packet Tracer</h3>
+                        <p class="draft-desc">Rancangan topologi jaringan Bintang (Star) menghubungkan Switch Layer 2, Router Mikrotik/Cisco, Server DHCP, dan 10 PC Client sekolah.</p>
+                        <img src="https://placehold.co/500x200/e2e8f0/1e293b?text=Topologi+Packet+Tracer+Preview" alt="Topologi Jaringan" style="width: 100%; border-radius: 6px; margin-top: 10px;">
+                    </div>
+                </div>
+
+                <!-- Draft Card 3 -->
+                <div class="draft-card">
+                    <div class="draft-header">
+                        <span class="draft-badge">Modul 03</span>
+                        <i class="fa-solid fa-magnifying-glass-chart" style="color: var(--primary-blue);"></i>
+                    </div>
+                    <div class="draft-body">
+                        <h3 class="draft-title">Analisis Protokol dengan Wireshark</h3>
+                        <p class="draft-desc">Pengamatan lalu lintas paket data HTTP, DNS Query, dan pengujian proses Tiga-Langkah (Three-Way Handshake) protokol TCP pada jaringan lokal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4B. MODUL IOT & ARDUINO (pages/iot-arduino.html) -->
+        <section id="page-iot-arduino" class="page-section">
+            <div class="section-header">
+                <h2 class="section-title">🤖 Modul Internet of Things / Arduino</h2>
+                <p class="section-subtitle">Dokumentasi sirkuit, kode program C/C++, dan eksperimen sensor mikrokontroler</p>
+            </div>
+
+            <div class="module-grid">
+                <!-- Draft Card 1 -->
+                <div class="draft-card">
+                    <div class="draft-header">
+                        <span class="draft-badge">Simulasi Wokwi</span>
+                        <i class="fa-solid fa-microchip" style="color: var(--primary-blue);"></i>
+                    </div>
+                    <div class="draft-body">
+                        <h3 class="draft-title">Sistem Pemantau Suhu (DHT11 + LCD I2C)</h3>
+                        <p class="draft-desc">Membaca data suhu dan kelembapan udara menggunakan sensor DHT11 lalu menampilkan hasilnya pada layar LCD 16x2 dengan komunikasi I2C.</p>
+                        <div class="code-preview">
+#include &lt;DHT.h&gt;
+#include &lt;LiquidCrystal_I2C.h&gt;
+
+#define DHTPIN 2
+#define DHTTYPE DHT11
+DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+  dht.begin();
+}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Draft Card 2 -->
+                <div class="draft-card">
+                    <div class="draft-header">
+                        <span class="draft-badge">Aktuator</span>
+                        <i class="fa-solid fa-gear" style="color: var(--primary-blue);"></i>
+                    </div>
+                    <div class="draft-body">
+                        <h3 class="draft-title">Kontrol Servo & Sensor Ultrasonik</h3>
+                        <p class="draft-desc">Simulasi palang pintu otomatis berbasis jarak benda yang dideteksi oleh Sensor HC-SR04 dan diproses oleh Motor Servo SG90.</p>
+                        <img src="https://placehold.co/500x200/f1f5f9/0f172a?text=Skematik+Sirkuit+Fritzing" alt="Skematik Arduino" style="width: 100%; border-radius: 6px; margin-top: 10px;">
+                    </div>
+                </div>
+
+                <!-- Draft Card 3 -->
+                <div class="draft-card">
+                    <div class="draft-header">
+                        <span class="draft-badge">IoT Web</span>
+                        <i class="fa-solid fa-wifi" style="color: var(--primary-blue);"></i>
+                    </div>
+                    <div class="draft-body">
+                        <h3 class="draft-title">ESP8266 Wi-Fi Web Server Smart Relay</h3>
+                        <p class="draft-desc">Pengendalian modul Relay sakelar lampu jarak jauh menggunakan modul ESP8266 NodeMCU melalui browser web smartphone.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4C. MODUL PROYEK & KOLABORASI (pages/karya-proyek.html) -->
+        <section id="page-karya-proyek" class="page-section">
+            <div class="section-header">
+                <h2 class="section-title">💡 Galeri Karya & Proyek</h2>
+                <p class="section-subtitle">Kumpulan tugas, aplikasi, dan hasil proyek kolaborasi siswa Informatika</p>
+            </div>
+
+            <div class="module-grid">
+                <!-- Proyek 1 -->
+                <div class="draft-card">
+                    <img src="https://placehold.co/600x320/0f172a/ffffff?text=Portofolio+Siswa+Web" alt="Proyek Web Portofolio" style="width:100%; height:180px; object-fit:cover;">
+                    <div class="draft-body">
+                        <div style="display:flex; gap:6px; margin-bottom:8px;">
+                            <span class="draft-badge">HTML5</span>
+                            <span class="draft-badge">CSS3</span>
+                        </div>
+                        <h3 class="draft-title">Website Portofolio Siswa Informatika</h3>
+                        <p class="draft-desc">Website portofolio pribadi berbasis HTML5 semantik dan CSS3 eksternal untuk mendokumentasikan hasil belajar kelas XII.</p>
+                        <div style="margin-top:1rem;">
+                            <a href="#" class="btn btn-dark" style="font-size:0.85rem; padding:6px 12px;"><i class="fa-brands fa-github"></i> Repository</a>
+                            <a href="#" class="btn btn-primary" style="font-size:0.85rem; padding:6px 12px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyek 2 -->
+                <div class="draft-card">
+                    <img src="https://placehold.co/600x320/1e40af/ffffff?text=Smart+Home+IoT" alt="Smart Home" style="width:100%; height:180px; object-fit:cover;">
+                    <div class="draft-body">
+                        <div style="display:flex; gap:6px; margin-bottom:8px;">
+                            <span class="draft-badge">Arduino</span>
+                            <span class="draft-badge">C++</span>
+                        </div>
+                        <h3 class="draft-title">Prototipe Smart Home Sensor Suhu</h3>
+                        <p class="draft-desc">Sistem otomatisasi kipas pendingin mini berdasarkan pembacaan batas suhu sensor DHT11 menggunakan Arduino Uno.</p>
+                        <div style="margin-top:1rem;">
+                            <a href="#" class="btn btn-dark" style="font-size:0.85rem; padding:6px 12px;"><i class="fa-brands fa-github"></i> Wokwi Link</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyek 3 -->
+                <div class="draft-card">
+                    <img src="https://placehold.co/600x320/2563eb/ffffff?text=Kalkulator+IP+Subnet" alt="Kalkulator Subnet" style="width:100%; height:180px; object-fit:cover;">
+                    <div class="draft-body">
+                        <div style="display:flex; gap:6px; margin-bottom:8px;">
+                            <span class="draft-badge">JavaScript</span>
+                            <span class="draft-badge">Networking</span>
+                        </div>
+                        <h3 class="draft-title">Kalkulator Subnetting IP Class C</h3>
+                        <p class="draft-desc">Aplikasi web sederhana untuk merinci Network ID, Broadcast ID, dan jumlah Host valid berdasarkan Prefix / CIDR.</p>
+                        <div style="margin-top:1rem;">
+                            <a href="#" class="btn btn-dark" style="font-size:0.85rem; padding:6px 12px;"><i class="fa-brands fa-github"></i> Repository</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. HALAMAN FORMULIR KONTAK (pages/kontak.html) -->
+        <section id="page-kontak" class="page-section">
+            <div class="section-header">
+                <h2 class="section-title">📬 Kontak & Diskusi</h2>
+                <p class="section-subtitle">Kirimkan pesan, saran, atau tawaran kolaborasi proyek belajar</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <!-- Info Kontak Alternatif -->
+                <div class="contact-info-card">
+                    <h3 style="margin-bottom: 1.5rem; font-size: 1.3rem;">Informasi Kontak</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h4 style="font-size: 0.95rem; color: #93c5fd;">Email Sekolah / Siswa</h4>
+                            <p style="font-size: 0.9rem;">kencana.ayu@siswa.sman2mojokerto.sch.id</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4 style="font-size: 0.95rem; color: #93c5fd;">Lokasi Kota</h4>
+                            <p style="font-size: 0.9rem;">Mojokerto, Jawa Timur, Indonesia</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon"><i class="fa-solid fa-school"></i></div>
+                        <div>
+                            <h4 style="font-size: 0.95rem; color: #93c5fd;">Laboratorium</h4>
+                            <p style="font-size: 0.9rem;">Lab Rekayasa Perangkat Lunak - Lt. 2</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulir Pesan -->
+                <div class="form-card">
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="nama" class="form-label">Nama Pengirim</label>
+                            <input type="text" id="nama" class="form-control" placeholder="Masukkan nama lengkap Anda" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Alamat Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="contoh@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kategori" class="form-label">Kategori Pesan</label>
+                            <select id="kategori" class="form-control" required>
+                                <option value="" disabled selected>-- Pilih Kategori --</option>
+                                <option value="Pertanyaan">Pertanyaan</option>
+                                <option value="Kolaborasi">Kolaborasi Proyek</option>
+                                <option value="Saran">Saran & Masukan</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pesan" class="form-label">Pesan Teks</label>
+                            <textarea id="pesan" class="form-control" placeholder="Tuliskan pesan Anda di sini..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            <i class="fa-solid fa-paper-plane"></i> Kirim Pesan
+                        </button>
+                    </form>
+
+                    <!-- Alert Notifikasi (Tanpa Alert Box Browser) -->
+                    <div id="alertSuccess" class="alert-box alert-success">
+                        <i class="fa-solid fa-circle-check"></i> Pesan Anda berhasil dikirim! Terima kasih telah menghubungi.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <p>&copy; 2026 Portofolio Kencana Ayu Putri Heryanti - Siswa Kelas XII Informatika.</p>
+                <p style="font-size: 0.8rem; margin-top: 4px; color: #64748b;">Dibuat sesuai Standar Struktur HTML5 & Assets External CSS.</p>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com" target="_blank" class="social-btn" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://instagram.com" target="_blank" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * System Router & Page Switcher Simulation
+         * Mensimulasikan navigasi antar file halaman HTML (index.html, pages/tentang.html, dll)
+         */
+        const pageFileMap = {
+            'index': 'index.html',
+            'tentang': 'pages/tentang.html',
+            'jaringan': 'pages/jaringan.html',
+            'iot-arduino': 'pages/iot-arduino.html',
+            'karya-proyek': 'pages/karya-proyek.html',
+            'kontak': 'pages/kontak.html'
+        };
+
+        function switchPage(pageId) {
+            // Sembunyikan semua seksi halaman
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+
+            // Tampilkan seksi yang dipilih
+            const targetSection = document.getElementById('page-' + pageId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Update status tombol menu navigasi
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // Update indikator file aktif untuk demonstrasi
+            const fileLabel = document.getElementById('current-file-label');
+            if (fileLabel && pageFileMap[pageId]) {
+                fileLabel.textContent = pageFileMap[pageId];
+            }
+
+            // Tutup menu mobile jika terbuka
+            document.getElementById('navMenu').classList.remove('active');
+
+            // Scroll ke bagian atas
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Toggle mobile menu
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // Form submit handler tanpa alert browser
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('alertSuccess');
+            alertBox.style.display = 'block';
+
+            // Reset formulir
+            document.getElementById('contactForm').reset();
+
+            // Sembunyikan notifikasi setelah 5 detik
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 5000);
+        }
+
+        // Deteksi Hash URL saat pertama kali dimuat
+        window.addEventListener('load', function() {
+            const hash = window.location.hash.replace('#', '');
+            if (hash && pageFileMap[hash]) {
+                switchPage(hash);
+            }
+        });
+    </script>
+</body>
+</html>
